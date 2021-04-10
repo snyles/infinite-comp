@@ -4,6 +4,12 @@ import React, { useState } from 'react';
 
 function App () {
   const [display, setDisplay] = useState('flex');
+  const [key, setKey] = useState('1234');
+
+  const changeKey = () => {
+    const newKey = Math.floor(Math.random()*9999)
+    setKey(newKey);
+  }
 
   const switchDisplay = () => {
     const newDisplay = display === 'flex' ? 'grid' : 'flex';
@@ -16,8 +22,11 @@ function App () {
         <button onClick={switchDisplay}>
           Display{ display === 'grid' ? ' Flex' : ' Grid'}
         </button>
+        <button onClick={changeKey}>
+          Reset
+        </button>
       </div>
-      <LittleBox bgColor="grey" display={display} />
+      <LittleBox key={key} bgColor="grey" display={display} />
     </div>
   );
 }
